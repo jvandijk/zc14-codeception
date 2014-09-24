@@ -1,0 +1,13 @@
+{
+    "name": "jvandijk/src",
+    "require-dev": {
+        "codeception/codeception": "2.0.5"
+    },
+    "authors": [
+        {
+            "name": "Jeroen van Dijk",
+            "email": "jeroen@enrise.com"
+        }
+    ],
+    "require": {}
+}
