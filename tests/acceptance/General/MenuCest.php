@@ -1,6 +1,12 @@
 <?php
 namespace General;
 
+/**
+ * Class MenuCest
+ *
+ * @package General
+ * @guy CompareSteps
+ */
 class MenuCest
 {
     public function _before(\AcceptanceTester $I)
@@ -21,5 +27,10 @@ class MenuCest
         $I->wantTo('see if conference name exists');
         $I->amOnPage('/');
         $I->see('zendcon');
+    }
+
+    public function seeIfNameExistsViaCCStep(\CompareSteps $I)
+    {
+        $I->seeIfNameExists();
     }
 }
