@@ -100,7 +100,6 @@ class CompareSteps extends \AcceptanceTester
         $options['url'] = $options['alternate-url'];
         $phpBrowser = new PhpBrowser($options);
         $phpBrowser->_initialize();
-        $this->setProxyInGuzzle($phpBrowser->guzzle);
         return $phpBrowser;
     }
 
