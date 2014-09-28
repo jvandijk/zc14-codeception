@@ -38,4 +38,9 @@ class MenuCest
     {
         $I->seeIfNameExistsViaPageObject();
     }
+
+    public function seeIfNameExistsWithOverridedFetch(\CompareSteps $I)
+    {
+        $I->seeIfNameExistsViaOverridedFetch();
+    }
 }

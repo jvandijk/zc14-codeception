@@ -26,4 +26,9 @@ class AcceptanceHelper extends \Codeception\Module
             $client->setDefaultOption('proxy', $config['settings']['proxy']);
         }
     }
+
+    public function fetchModule($moduleName)
+    {
+        return $this->getModule($moduleName);
+    }
 }
