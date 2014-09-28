@@ -2,6 +2,7 @@
 
 use Codeception\Lib\InnerBrowser;
 use Codeception\Module\PhpBrowser;
+use Codeception\Configuration;
 use Symfony\Component\CssSelector\CssSelector;
 
 class CompareSteps extends \AcceptanceTester
@@ -25,6 +26,21 @@ class CompareSteps extends \AcceptanceTester
         PHPUnit_Framework_Assert::assertContains('zendcon', $html, '', true);
     }
 
+    public function seeSameOnVersions($page, $path, $alternatePath, $message)
+    {
+        $I = $this;
+        list($left, $right) = $this->getContentFromVersions($page, $path, $alternatePath);
+        $I->seeEquals($left, $right, $message);
+    }
+
+    public function getContentFromVersions($page, $path, $alternatePath)
+    {
+        return array(
+            $this->getHtml($page, $path),
+            $this->getAlternateHtml($page, $alternatePath)
+        );
+    }
+
     /**
      * return the raw html from url
      * @param $page
@@ -36,6 +52,16 @@ class CompareSteps extends \AcceptanceTester
         // use the internal testsuite phpbrowser for normal retrieval
         $I->amOnPage($page);
         return $this->getHtmlFromContent($I->fetchModule('PhpBrowser'), $path);
+    }
+
+    /**
+     * return the raw html from master
+     * @param $page
+     * @param $path
+     */
+    public function getAlternateHtml($page, $path)
+    {
+        return $this->getHtmlFromContent($this->getPhpBrowserByPage($page), $path);
     }
 
     /**
@@ -51,6 +77,31 @@ class CompareSteps extends \AcceptanceTester
         $selector = CssSelector::toXPath($cssOrXPathOrRegex);
         $value = $crawler->filterXPath($selector);
         return $value->html();
+    }
+
+    /**
+     * initiate a PhpBrowser instance with caching per page
+     * @param $page
+     * @return Codeception\Module\PhpBrowser
+     */
+    protected function getPhpBrowserByPage($page)
+    {
+        $phpBrowser = $this->getAlternatePhpBrowser();
+        $phpBrowser->amOnPage($page);
+        return $phpBrowser;
+
+    }
+
+    protected function getAlternatePhpBrowser()
+    {
+        $config = Configuration::config();
+        $suite = Configuration::suiteSettings('acceptance', $config);
+        $options = $suite['modules']['config']['PhpBrowser'];
+        $options['url'] = $options['alternate-url'];
+        $phpBrowser = new PhpBrowser($options);
+        $phpBrowser->_initialize();
+        $this->setProxyInGuzzle($phpBrowser->guzzle);
+        return $phpBrowser;
     }
 
     protected function getCrawler(InnerBrowser $innerBrowser)

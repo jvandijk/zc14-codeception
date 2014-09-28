@@ -43,4 +43,24 @@ class MenuCest
     {
         $I->seeIfNameExistsViaOverridedFetch();
     }
+
+    public function seeIfPageHeaderIsIdentical(\CompareSteps $I)
+    {
+        $I->seeSameOnVersions(
+            \HomePage::$URL,
+            'h2',
+            'h2',
+            'Homepage header not identical'
+        );
+    }
+
+    public function seeIfFormActionIsIdentical(\CompareSteps $I)
+    {
+        $I->seeSameOnVersions(
+            \HomePage::$URL,
+            '.rsformbox1',
+            '.rsformbox1',
+            'Homepage base href not identical'
+        );
+    }
 }

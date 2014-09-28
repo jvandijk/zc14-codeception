@@ -12,3 +12,4 @@ modules:
     config:
         PhpBrowser:
             url: 'http://www.zendcon.com/'
+            alternate-url: 'http://zendcon.com'

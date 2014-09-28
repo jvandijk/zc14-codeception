@@ -19,7 +19,7 @@ class AcceptanceHelper extends \Codeception\Module
         $this->setProxyInGuzzle($this->getModule('PhpBrowser')->guzzle);
     }
 
-    protected function setProxyInGuzzle(Client $client)
+    public function setProxyInGuzzle(Client $client)
     {
         $config = Configuration::config();
         if (array_key_exists('proxy', $config['settings'])) {
@@ -30,5 +30,10 @@ class AcceptanceHelper extends \Codeception\Module
     public function fetchModule($moduleName)
     {
         return $this->getModule($moduleName);
+    }
+
+    public function seeEquals($actual, $expected, $message = '')
+    {
+        $this->assertEquals($actual, $expected, $message);
     }
 }
