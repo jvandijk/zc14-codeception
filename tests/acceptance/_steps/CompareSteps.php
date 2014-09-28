@@ -1,6 +1,5 @@
 <?php
 
-
 class CompareSteps extends \AcceptanceTester
 {
     public function seeIfNameExists()
@@ -8,5 +7,10 @@ class CompareSteps extends \AcceptanceTester
         $I = $this;
         $I->amOnPage('/');
         $I->see('zendcon');
+    }
+
+    public function seeIfNameExistsViaPageObject()
+    {
+        HomePage::of($this)->see('zendcon');
     }
 }

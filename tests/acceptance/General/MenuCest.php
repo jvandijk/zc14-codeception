@@ -33,4 +33,9 @@ class MenuCest
     {
         $I->seeIfNameExists();
     }
+
+    public function seeIfNameExistsViaCCStepAndPageObject(\CompareSteps $I)
+    {
+        $I->seeIfNameExistsViaPageObject();
+    }
 }
