@@ -5,3 +5,8 @@ modules:
             CURLOPT_PROXY: http://127.0.0.1:8888
             CURLOPT_CONNECTTIMEOUT_MS: 0
             CURLOPT_TIMEOUT_MS: 60000
+      REST:
+          curl:
+            CURLOPT_PROXY: http://127.0.0.1:8888
+            CURLOPT_CONNECTTIMEOUT_MS: 0
+            CURLOPT_TIMEOUT_MS: 60000

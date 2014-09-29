@@ -1,3 +1,11 @@
 class_name: ApiTester
 modules:
-    enabled: [ApiHelper]
+    enabled:
+      - ApiHelper
+      - PhpBrowser
+      - REST
+    config:
+      PhpBrowser:
+          url: https://api.github.com
+      REST:
+          url: https://api.github.com
