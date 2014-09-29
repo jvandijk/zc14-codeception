@@ -9,3 +9,12 @@ modules:
           url: https://api.github.com
       REST:
           url: https://api.github.com
+env:
+    beta:
+        config:
+            data:
+                accept: application/vnd.github.beta+json
+    version3:
+        config:
+            data:
+                accept: application/vnd.github.v3+json
