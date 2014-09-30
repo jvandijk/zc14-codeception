@@ -14,4 +14,9 @@ class HostCest
     {
         $I->seeIfPortIsReachable('www.zendcon.com', 80);
     }
+
+    public function testIfDnsCanBeResolved(MigrateTester $I)
+    {
+        $I->seeAddressIsMatchingIp('zendcon.com', '50.56.0.87');
+    }
 }

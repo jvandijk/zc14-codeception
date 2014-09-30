@@ -20,4 +20,13 @@ class MigrateHelper extends \Codeception\Module
         $cli->runShellCommand('nmap '.$host.' -Pn -p '.$port);
         $cli->seeInShellOutput($port.'/tcp open');
     }
+
+    public function seeAddressIsMatchingIp($address, $ip)
+    {
+        $cli = $this->getModule('Cli');
+        $cli->runShellCommand('host '.$address);
+        $cli->seeInShellOutput($address . ' has address '.$ip);
+    }
+
+    
 }
