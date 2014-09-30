@@ -9,4 +9,9 @@ class HostCest
     {
         $I->seeIfLineExistsInFile('/etc/hosts', '127.0.0.1');
     }
+
+    public function testIfPortReachable(MigrateTester $I)
+    {
+        $I->seeIfPortIsReachable('www.zendcon.com', 80);
+    }
 }

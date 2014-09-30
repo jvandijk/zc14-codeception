@@ -3,3 +3,4 @@ modules:
     enabled:
         - MigrateHelper
         - Filesystem
+        - Cli
