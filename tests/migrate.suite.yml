@@ -4,3 +4,16 @@ modules:
         - MigrateHelper
         - Filesystem
         - Cli
+env:
+    remote:
+        modules:
+            enabled:
+                - MigrateHelper
+                - Filesystem
+                - Cli
+                - FTP
+            config:
+                FTP:
+                    type: sftp
+                    host: '127.0.0.1'
+                    port: 22

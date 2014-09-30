@@ -19,4 +19,12 @@ class HostCest
     {
         $I->seeAddressIsMatchingIp('zendcon.com', '50.56.0.87');
     }
+
+    /**
+     * @env remote
+     */
+    public function testIfRemoteFileHasContents(MigrateTester $I)
+    {
+        $I->seeContentsInRemoteFile('/etc/hosts', '127.0.0.1');
+    }
 }

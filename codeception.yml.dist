@@ -10,3 +10,7 @@ modules:
             CURLOPT_PROXY: http://127.0.0.1:8888
             CURLOPT_CONNECTTIMEOUT_MS: 0
             CURLOPT_TIMEOUT_MS: 60000
+      FTP:
+          user: 'set the ssh username'
+          password: 'set the ssh password'
+

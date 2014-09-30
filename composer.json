@@ -9,5 +9,7 @@
             "email": "jeroen@enrise.com"
         }
     ],
-    "require": {}
+    "require": {
+        "phpseclib/phpseclib": "0.3.6"
+    }
 }

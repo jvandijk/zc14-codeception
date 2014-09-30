@@ -28,5 +28,11 @@ class MigrateHelper extends \Codeception\Module
         $cli->seeInShellOutput($address . ' has address '.$ip);
     }
 
-    
+    public function seeContentsInRemoteFile($file, $line)
+    {
+        $server = $this->getModule('FTP');
+        $server->seeFileFound(basename($file), dirname($file));
+        $server->openFile($file);
+        $server->seeInThisFile($line);
+    }
 }
